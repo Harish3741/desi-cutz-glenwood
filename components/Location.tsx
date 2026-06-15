@@ -73,7 +73,7 @@ export default function Location() {
             <div className="panel" style={{ overflow: "hidden", flexGrow: 1, minHeight: "220px", padding: 0 }}>
               <iframe
                 title="Desi Cutz Glenwood Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.65!2d150.9259!3d-33.7347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zShop+3%2F60+Glenwood+Park+Dr+Glenwood+NSW+2768!5e0!3m2!1sen!2sau!4v1"
+                src="https://maps.google.com/maps?q=Desi+Cutz+Glenwood&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="240"
                 style={{ border: 0, display: "block" }}

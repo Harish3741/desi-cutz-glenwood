@@ -1,29 +1,97 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 
-const images = [
-  { src: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=900&q=80", alt: "Classic fade haircut" },
-  { src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&q=80", alt: "Barber at work" },
-  { src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=900&q=80", alt: "Skin fade" },
-  { src: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=80", alt: "Beard trim" },
-  { src: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=80", alt: "Salon interior" },
-  { src: "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=900&q=80", alt: "Fresh cut finish" },
+// Add your photo paths here once uploaded to /public/photos/
+// e.g. before: "/desi-cutz-glenwood/photos/skin-fade-before.jpg"
+const SLOTS = [
+  { label: "Skin Fade",   before: "", after: "" },
+  { label: "Classic Cut", before: "", after: "" },
+  { label: "Beard Shape", before: "", after: "" },
 ];
 
+function Placeholder({ text }: { text: string }) {
+  return (
+    <div style={{
+      position: "absolute", inset: 0,
+      background: "var(--surface-2)",
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      gap: "0.9rem",
+    }}>
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--line-2)" strokeWidth="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+        <polyline points="21 15 16 10 5 21" />
+      </svg>
+      <span style={{ color: "var(--dim)", fontSize: "0.68rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+        {text}
+      </span>
+    </div>
+  );
+}
+
+function Slider({ before, after, label }: { before: string; after: string; label: string }) {
+  const [pos, setPos] = useState(50);
+  const dragging = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const hasPhotos = Boolean(before && after);
+
+  const updatePos = (clientX: number) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setPos(Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100)));
+  };
+
+  return (
+    <div>
+      <div
+        ref={containerRef}
+        onMouseDown={(e) => { if (!hasPhotos) return; dragging.current = true; updatePos(e.clientX); }}
+        onMouseMove={(e) => { if (dragging.current) updatePos(e.clientX); }}
+        onMouseUp={() => { dragging.current = false; }}
+        onMouseLeave={() => { dragging.current = false; }}
+        onTouchStart={(e) => { if (hasPhotos) updatePos(e.touches[0].clientX); }}
+        onTouchMove={(e) => { if (hasPhotos) updatePos(e.touches[0].clientX); }}
+        style={{
+          position: "relative", overflow: "hidden",
+          cursor: hasPhotos ? "ew-resize" : "default",
+          userSelect: "none", aspectRatio: "4/3",
+          background: "var(--surface)", borderRadius: "14px",
+          border: "1px solid var(--line)",
+        }}
+      >
+        {hasPhotos ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={before} alt={`${label} — before`} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={after} alt={`${label} — after`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+
+            {/* Slider handle */}
+            <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: "2px", background: "var(--red)", transform: "translateX(-50%)", pointerEvents: "none" }}>
+              <div style={{
+                position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
+                width: "38px", height: "38px", borderRadius: "50%", background: "var(--red)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                boxShadow: "0 2px 14px rgba(0,0,0,0.3)", color: "#fff", fontSize: "0.8rem", fontWeight: 900, letterSpacing: "-1px",
+              }}>‹›</div>
+            </div>
+
+            <span style={{ position: "absolute", top: "0.7rem", left: "0.7rem", background: "rgba(0,0,0,0.55)", color: "#fff", fontSize: "0.62rem", letterSpacing: "0.18em", textTransform: "uppercase", padding: "3px 9px", borderRadius: "4px" }}>Before</span>
+            <span style={{ position: "absolute", top: "0.7rem", right: "0.7rem", background: "var(--red)", color: "#fff", fontSize: "0.62rem", letterSpacing: "0.18em", textTransform: "uppercase", padding: "3px 9px", borderRadius: "4px", fontWeight: 700 }}>After</span>
+          </>
+        ) : (
+          <Placeholder text="Photo coming soon" />
+        )}
+      </div>
+      <p className="display" style={{ textAlign: "center", color: "var(--text)", fontSize: "0.95rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "0.9rem" }}>{label}</p>
+    </div>
+  );
+}
+
 export default function Gallery() {
-  const [lightbox, setLightbox] = useState<number | null>(null);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLightbox(null);
-      if (e.key === "ArrowRight" && lightbox !== null) setLightbox((lightbox + 1) % images.length);
-      if (e.key === "ArrowLeft" && lightbox !== null) setLightbox((lightbox - 1 + images.length) % images.length);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [lightbox]);
-
   return (
     <section id="gallery" className="section section-alt">
       <div className="container">
@@ -31,80 +99,17 @@ export default function Gallery() {
           <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1rem" }}>Our Work</p>
           <h2 className="title">The <span className="accent-text">Gallery</span></h2>
           <div className="rule" />
+          <p className="lead" style={{ maxWidth: "440px", margin: "1.4rem auto 0" }}>
+            Drag the slider to see the transformation.
+          </p>
         </div>
 
-        <div
-          className="reveal"
-          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1rem" }}
-        >
-          {images.map((img, i) => (
-            <div
-              key={i}
-              className="gallery-item"
-              onClick={() => setLightbox(i)}
-              style={{ cursor: "pointer", aspectRatio: "1" }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={img.src} alt={img.alt} loading="lazy" />
-              <div
-                className="gallery-overlay"
-                style={{
-                  position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                  opacity: 0, transition: "opacity 0.3s", background: "rgba(0,0,0,0.35)",
-                }}
-              >
-                <span style={{
-                  width: "46px", height: "46px", borderRadius: "50%", border: "2px solid #ffffff",
-                  display: "flex", alignItems: "center", justifyContent: "center", color: "#ffffff",
-                  background: "rgba(0,0,0,0.3)",
-                }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
-                  </svg>
-                </span>
-              </div>
-            </div>
+        <div className="reveal" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.5rem" }}>
+          {SLOTS.map((slot, i) => (
+            <Slider key={i} before={slot.before} after={slot.after} label={slot.label} />
           ))}
         </div>
-
-        <p style={{ textAlign: "center", marginTop: "1.75rem", color: "var(--dim)", fontSize: "0.8rem", letterSpacing: "0.06em" }}>
-          Tap any photo to view it full size
-        </p>
       </div>
-
-      {/* Lightbox */}
-      {lightbox !== null && (
-        <div
-          onClick={() => setLightbox(null)}
-          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.94)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}
-        >
-          <button
-            onClick={() => setLightbox(null)}
-            style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: "1px solid rgba(255,255,255,0.25)", color: "#ffffff", width: "42px", height: "42px", cursor: "pointer", fontSize: "1.1rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
-          >✕</button>
-          <button
-            onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + images.length) % images.length); }}
-            style={{ position: "absolute", left: "1.5rem", background: "none", border: "1px solid rgba(255,255,255,0.25)", color: "#ffffff", width: "46px", height: "46px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
-          >‹</button>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={images[lightbox].src}
-            alt={images[lightbox].alt}
-            onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)" }}
-          />
-          <button
-            onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % images.length); }}
-            style={{ position: "absolute", right: "1.5rem", background: "none", border: "1px solid rgba(255,255,255,0.25)", color: "#ffffff", width: "46px", height: "46px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
-          >›</button>
-          <div style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", letterSpacing: "0.1em" }}>
-            {lightbox + 1} / {images.length}
-          </div>
-        </div>
-      )}
-
-      <style>{`.gallery-item:hover .gallery-overlay { opacity: 1 !important; }`}</style>
     </section>
   );
 }
