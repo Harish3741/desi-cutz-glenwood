@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harish3741.github.io/desi-cutz-glenwood/sitemap.xml
