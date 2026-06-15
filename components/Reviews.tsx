@@ -1,9 +1,14 @@
 const reviews = [
-  { name: "Mike Smith",      rating: 5, text: "Coming here for the last 2 years — always the best haircuts, never disappointed.", service: "Children's cuts · Scissor cut · Beard trim" },
-  { name: "Raj Kalsi",       rating: 5, text: "Just had a haircut with George — top-notch experience! Super chill atmosphere, and George really knows his craft. Definitely coming back!", service: "Scissor cut" },
-  { name: "Malk Pannu",      rating: 5, text: "Great place for solid cuts. Super friendly staff and super service!!", service: "" },
-  { name: "Heaven Malhotra", rating: 5, text: "What a place. I was searching for a good barber for a long time. They actually know how to cut hair. Strongly recommended.", service: "" },
-  { name: "Rohit",           rating: 5, text: "Great bunch of boys, quality cuts and affordable. Been coming here for years and definitely the best barber in the area — also much cheaper than others. Highly recommended.", service: "" },
+  { name: "Mike Smith",       rating: 5, text: "Coming here for the last 2 years — always the best haircuts, never disappointed.", service: "Children's cuts · Scissor cut · Beard trim" },
+  { name: "Raj Kalsi",        rating: 5, text: "Just had a haircut with George — top-notch experience! Super chill atmosphere, and George really knows his craft. Definitely coming back!", service: "Scissor cut" },
+  { name: "Malk Pannu",       rating: 5, text: "Great place for solid cuts. Super friendly staff and super service!!", service: "" },
+  { name: "Heaven Malhotra",  rating: 5, text: "What a place. I was searching for a good barber for a long time. They actually know how to cut hair. Strongly recommended.", service: "" },
+  { name: "Rohit",            rating: 5, text: "Great bunch of boys, quality cuts and affordable. Best barber in the area and much cheaper than others. Highly recommended.", service: "" },
+  { name: "Ajay Singh",       rating: 4, text: "Great barbers, cater to all hairstyles and know all different styles of cuts. Pricing is very reasonable. Highly recommend!", service: "" },
+  { name: "Harry Sira",       rating: 5, text: "Been coming here since moving to Sydney. Had cuts from every barber here and the quality is always the same — great service, great vibes, great banter. Thanks boys!", service: "" },
+  { name: "Chaitanya Garg",   rating: 5, text: "One stop shop for amazing haircuts. Been coming here 4 years, no complaints. All the boys are hard-working and understanding. Best barber in Sydney!", service: "" },
+  { name: "Gurushekh Milan",  rating: 5, text: "Akash did a great job on the skin fade and neatly styled my hair to my liking. Shop was clean and neatly kept. Great experience.", service: "Skin Fade" },
+  { name: "Vijyant Kataria",  rating: 4, text: "Warm welcome and excellent service from the staff. Friendly and professional — extra careful and helpful with our special needs child's haircut.", service: "" },
 ];
 
 function Stars({ rating }: { rating: number }) {
