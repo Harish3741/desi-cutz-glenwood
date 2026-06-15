@@ -25,11 +25,11 @@ export default function Gallery() {
   }, [lightbox]);
 
   return (
-    <section id="gallery" className="section">
+    <section id="gallery" className="section section-alt">
       <div className="container">
         <div className="reveal" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1rem" }}>Our Work</p>
-          <h2 className="title">The <span className="gold-text">Gallery</span></h2>
+          <h2 className="title">The <span className="accent-text">Gallery</span></h2>
           <div className="rule" />
         </div>
 
@@ -50,15 +50,15 @@ export default function Gallery() {
                 className="gallery-overlay"
                 style={{
                   position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                  opacity: 0, transition: "opacity 0.3s", background: "linear-gradient(180deg, rgba(13,13,14,0) 40%, rgba(13,13,14,0.6) 100%)",
+                  opacity: 0, transition: "opacity 0.3s", background: "rgba(0,0,0,0.35)",
                 }}
               >
                 <span style={{
-                  width: "46px", height: "46px", borderRadius: "50%", border: "1px solid var(--gold)",
-                  display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold-lt)",
-                  background: "rgba(13,13,14,0.5)", boxShadow: "0 0 20px rgba(233,205,146,0.25)",
+                  width: "46px", height: "46px", borderRadius: "50%", border: "2px solid #ffffff",
+                  display: "flex", alignItems: "center", justifyContent: "center", color: "#ffffff",
+                  background: "rgba(0,0,0,0.3)",
                 }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
                     <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
                   </svg>
@@ -77,28 +77,28 @@ export default function Gallery() {
       {lightbox !== null && (
         <div
           onClick={() => setLightbox(null)}
-          style={{ position: "fixed", inset: 0, background: "rgba(8,8,9,0.96)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.94)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}
         >
           <button
             onClick={() => setLightbox(null)}
-            style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: "1px solid var(--line-2)", color: "var(--text)", width: "42px", height: "42px", cursor: "pointer", fontSize: "1.1rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
+            style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: "1px solid rgba(255,255,255,0.25)", color: "#ffffff", width: "42px", height: "42px", cursor: "pointer", fontSize: "1.1rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
           >✕</button>
           <button
             onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + images.length) % images.length); }}
-            style={{ position: "absolute", left: "1.5rem", background: "none", border: "1px solid var(--line-2)", color: "var(--gold-lt)", width: "46px", height: "46px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
+            style={{ position: "absolute", left: "1.5rem", background: "none", border: "1px solid rgba(255,255,255,0.25)", color: "#ffffff", width: "46px", height: "46px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
           >‹</button>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={images[lightbox].src}
             alt={images[lightbox].alt}
             onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "10px", border: "1px solid var(--line-2)" }}
+            style={{ maxWidth: "90vw", maxHeight: "85vh", objectFit: "contain", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)" }}
           />
           <button
             onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % images.length); }}
-            style={{ position: "absolute", right: "1.5rem", background: "none", border: "1px solid var(--line-2)", color: "var(--gold-lt)", width: "46px", height: "46px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
+            style={{ position: "absolute", right: "1.5rem", background: "none", border: "1px solid rgba(255,255,255,0.25)", color: "#ffffff", width: "46px", height: "46px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%" }}
           >›</button>
-          <div style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", color: "var(--muted)", fontSize: "0.8rem", letterSpacing: "0.1em" }}>
+          <div style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", letterSpacing: "0.1em" }}>
             {lightbox + 1} / {images.length}
           </div>
         </div>

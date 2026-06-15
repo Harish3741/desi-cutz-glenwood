@@ -1,19 +1,20 @@
 export default function Booking() {
   return (
     <section id="booking" className="section" style={{ position: "relative", overflow: "hidden" }}>
+      {/* Subtle red tint in background */}
       <div
         aria-hidden
         style={{
           position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          width: "760px", height: "760px", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(200,164,93,0.12) 0%, transparent 66%)", pointerEvents: "none",
+          width: "800px", height: "800px", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(196,30,30,0.05) 0%, transparent 66%)", pointerEvents: "none",
         }}
       />
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div className="reveal" style={{ textAlign: "center", marginBottom: "3rem" }}>
           <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1rem" }}>Reserve Your Seat</p>
-          <h2 className="title">Book an <span className="gold-text">Appointment</span></h2>
+          <h2 className="title">Book an <span className="accent-text">Appointment</span></h2>
           <div className="rule" />
           <p className="lead" style={{ maxWidth: "480px", margin: "1.4rem auto 0" }}>
             Pick a time that suits you. Online booking is rolling out soon — for
@@ -21,25 +22,23 @@ export default function Booking() {
           </p>
         </div>
 
-        {/* Embed-ready booking slot.
-            Drop a Calendly/Fresha embed (iframe or widget) inside the panel below
-            in place of the placeholder block to go live. */}
+        {/* Embed-ready booking slot */}
         <div className="panel reveal d1" style={{ maxWidth: "720px", margin: "0 auto", padding: "clamp(2rem, 5vw, 3.2rem)", textAlign: "center" }}>
           <div
             id="booking-embed"
             style={{
-              border: "1px dashed var(--line-2)",
+              border: "2px dashed var(--line-2)",
               borderRadius: "12px",
               padding: "3rem 1.5rem",
-              background: "rgba(255,255,255,0.015)",
               marginBottom: "2rem",
             }}
           >
             <div
               style={{
-                width: "60px", height: "60px", borderRadius: "50% 50% 8px 8px", margin: "0 auto 1.4rem",
-                border: "1px solid var(--gold)", display: "flex", alignItems: "center", justifyContent: "center",
-                color: "var(--gold-lt)", boxShadow: "0 0 24px rgba(233,205,146,0.22)",
+                width: "60px", height: "60px", borderRadius: "50%", margin: "0 auto 1.4rem",
+                background: "var(--red-soft)", border: "1px solid rgba(196,30,30,0.2)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: "var(--red)",
               }}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

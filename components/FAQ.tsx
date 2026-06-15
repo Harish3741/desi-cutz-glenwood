@@ -17,34 +17,34 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="section">
+    <section id="faq" className="section section-alt">
       <div className="container" style={{ maxWidth: "820px" }}>
         <div className="reveal" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1rem" }}>Got Questions?</p>
-          <h2 className="title">Frequently Asked <span className="gold-text">Questions</span></h2>
+          <h2 className="title">Frequently Asked <span className="accent-text">Questions</span></h2>
           <div className="rule" />
         </div>
 
-        <div className="reveal" style={{ display: "flex", flexDirection: "column" }}>
+        <div className="reveal" style={{ display: "flex", flexDirection: "column", background: "var(--bg-2)", border: "1px solid var(--line)", borderRadius: "16px", overflow: "hidden" }}>
           {faqs.map((faq, i) => (
-            <div key={i} style={{ borderBottom: "1px solid var(--line)", overflow: "hidden" }}>
+            <div key={i} style={{ borderBottom: i < faqs.length - 1 ? "1px solid var(--line)" : "none", overflow: "hidden" }}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 style={{
-                  width: "100%", background: "none", border: "none", padding: "1.4rem 0",
+                  width: "100%", background: "none", border: "none", padding: "1.4rem 1.8rem",
                   display: "flex", justifyContent: "space-between", alignItems: "center",
                   cursor: "pointer", gap: "1rem", textAlign: "left",
                 }}
               >
-                <span style={{ color: open === i ? "var(--gold-lt)" : "var(--text)", fontWeight: 600, fontSize: "1rem", transition: "color 0.3s", lineHeight: 1.4 }}>
+                <span style={{ color: open === i ? "var(--red)" : "var(--text)", fontWeight: 600, fontSize: "0.98rem", transition: "color 0.3s", lineHeight: 1.4 }}>
                   {faq.q}
                 </span>
-                <span style={{ color: "var(--gold)", fontSize: "1.2rem", flexShrink: 0, transition: "transform 0.3s", transform: open === i ? "rotate(45deg)" : "none", width: "20px", textAlign: "center", lineHeight: 1 }}>
+                <span style={{ color: "var(--red)", fontSize: "1.2rem", flexShrink: 0, transition: "transform 0.3s", transform: open === i ? "rotate(45deg)" : "none", width: "20px", textAlign: "center", lineHeight: 1 }}>
                   +
                 </span>
               </button>
               <div style={{ maxHeight: open === i ? "240px" : "0", overflow: "hidden", transition: "max-height 0.35s ease" }}>
-                <p style={{ color: "var(--muted)", fontSize: "0.92rem", lineHeight: 1.8, paddingBottom: "1.4rem" }}>{faq.a}</p>
+                <p style={{ color: "var(--muted)", fontSize: "0.92rem", lineHeight: 1.8, padding: "0 1.8rem 1.4rem" }}>{faq.a}</p>
               </div>
             </div>
           ))}

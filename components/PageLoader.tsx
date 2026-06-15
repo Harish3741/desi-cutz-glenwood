@@ -19,7 +19,7 @@ export default function PageLoader() {
       style={{
         position: "fixed",
         inset: 0,
-        background: "var(--bg)",
+        background: "#ffffff",
         zIndex: 9999,
         display: "flex",
         flexDirection: "column",
@@ -31,8 +31,8 @@ export default function PageLoader() {
         pointerEvents: fading ? "none" : "all",
       }}
     >
-      <div className="brand glow" style={{ fontSize: "2rem", color: "var(--text)", letterSpacing: "0.22em" }}>
-        Desi <span className="gold-text">Cutz</span>
+      <div className="brand" style={{ fontSize: "2rem", color: "var(--text)", letterSpacing: "0.22em" }}>
+        Desi <span style={{ color: "var(--red)" }}>Cutz</span>
       </div>
 
       <div style={{ width: "130px", height: "2px", background: "var(--line)", position: "relative", overflow: "hidden", borderRadius: "2px" }}>
@@ -40,7 +40,7 @@ export default function PageLoader() {
           style={{
             position: "absolute",
             inset: 0,
-            background: "var(--gold-grad)",
+            background: "var(--red)",
             animation: "loader-bar 0.9s ease-out forwards",
           }}
         />

@@ -1,6 +1,6 @@
 const reviews = [
   {
-    quote: "Best fade I've had in Sydney, hands down. The place feels high-end the second you walk in and the barbers actually listen.",
+    quote: "Best fade I've had in Sydney, hands down. The barbers actually listen and take their time — always walk out looking sharp.",
     name: "Marcus T.",
     detail: "Skin Fade + Beard",
   },
@@ -10,7 +10,7 @@ const reviews = [
     detail: "Kids Cut",
   },
   {
-    quote: "Clean, modern and the attention to detail is unreal. Booked a cut + beard combo and walked out feeling brand new.",
+    quote: "Clean shop, great vibes and the attention to detail is unreal. Booked a cut + beard combo and walked out feeling brand new.",
     name: "Daniel R.",
     detail: "Cut + Beard Combo",
   },
@@ -22,7 +22,7 @@ export default function Reviews() {
       <div className="container">
         <div className="reveal" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1rem" }}>Kind Words</p>
-          <h2 className="title">What Clients <span className="gold-text">Say</span></h2>
+          <h2 className="title">What Clients <span className="accent-text">Say</span></h2>
           <div className="rule" />
           <p style={{ marginTop: "1.4rem", color: "var(--muted)", fontSize: "0.92rem" }}>
             <span className="stars" style={{ fontSize: "1rem" }}>★★★★★</span>{" "}
@@ -36,7 +36,7 @@ export default function Reviews() {
               <span
                 className="display"
                 aria-hidden
-                style={{ position: "absolute", top: "0.6rem", right: "1.2rem", fontSize: "4.5rem", lineHeight: 1, color: "var(--emerald)", opacity: 0.5, fontWeight: 900 }}
+                style={{ position: "absolute", top: "0.6rem", right: "1.2rem", fontSize: "4.5rem", lineHeight: 1, color: "var(--red)", opacity: 0.15, fontWeight: 900 }}
               >
                 &rdquo;
               </span>
@@ -47,12 +47,12 @@ export default function Reviews() {
               <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
                 <span style={{
                   width: "40px", height: "40px", borderRadius: "50%", flexShrink: 0,
-                  background: "var(--gold-grad)", color: "var(--on-gold)", fontWeight: 800,
+                  background: "var(--red)", color: "#ffffff", fontWeight: 800,
                   display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.95rem",
                 }} className="display">{r.name.charAt(0)}</span>
                 <div>
                   <div style={{ color: "var(--text)", fontWeight: 600, fontSize: "0.92rem" }}>{r.name}</div>
-                  <div style={{ color: "var(--gold-dk)", fontSize: "0.74rem", letterSpacing: "0.08em", textTransform: "uppercase" }}>{r.detail}</div>
+                  <div style={{ color: "var(--muted)", fontSize: "0.74rem", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "2px" }}>{r.detail}</div>
                 </div>
               </div>
             </div>

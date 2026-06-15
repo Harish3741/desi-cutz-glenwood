@@ -47,7 +47,7 @@ function Slider({ before, after, label }: { before: string; after: string; label
           cursor: "ew-resize",
           userSelect: "none",
           aspectRatio: "4/3",
-          background: "var(--panel)",
+          background: "var(--surface)",
           borderRadius: "14px",
           border: "1px solid var(--line)",
         }}
@@ -60,18 +60,18 @@ function Slider({ before, after, label }: { before: string; after: string; label
         </div>
 
         {/* Divider */}
-        <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: "2px", background: "var(--gold)", transform: "translateX(-50%)", boxShadow: "0 0 14px rgba(233,205,146,0.5)" }}>
+        <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: "2px", background: "var(--red)", transform: "translateX(-50%)" }}>
           <div style={{
             position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-            width: "38px", height: "38px", borderRadius: "50%", background: "var(--gold-grad)",
-            display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 14px rgba(0,0,0,0.5)",
+            width: "38px", height: "38px", borderRadius: "50%", background: "var(--red)",
+            display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 14px rgba(0,0,0,0.3)",
           }}>
-            <span style={{ color: "var(--on-gold)", fontSize: "0.8rem", fontWeight: 900, letterSpacing: "-1px" }}>‹›</span>
+            <span style={{ color: "#ffffff", fontSize: "0.8rem", fontWeight: 900, letterSpacing: "-1px" }}>‹›</span>
           </div>
         </div>
 
-        <span style={{ position: "absolute", top: "0.7rem", left: "0.7rem", background: "rgba(8,8,9,0.75)", color: "var(--muted)", fontSize: "0.62rem", letterSpacing: "0.18em", textTransform: "uppercase", padding: "3px 9px", borderRadius: "4px" }}>Before</span>
-        <span style={{ position: "absolute", top: "0.7rem", right: "0.7rem", background: "var(--gold-grad)", color: "var(--on-gold)", fontSize: "0.62rem", letterSpacing: "0.18em", textTransform: "uppercase", padding: "3px 9px", borderRadius: "4px", fontWeight: 700 }}>After</span>
+        <span style={{ position: "absolute", top: "0.7rem", left: "0.7rem", background: "rgba(0,0,0,0.55)", color: "#ffffff", fontSize: "0.62rem", letterSpacing: "0.18em", textTransform: "uppercase", padding: "3px 9px", borderRadius: "4px" }}>Before</span>
+        <span style={{ position: "absolute", top: "0.7rem", right: "0.7rem", background: "var(--red)", color: "#ffffff", fontSize: "0.62rem", letterSpacing: "0.18em", textTransform: "uppercase", padding: "3px 9px", borderRadius: "4px", fontWeight: 700 }}>After</span>
       </div>
       <p className="display" style={{ textAlign: "center", color: "var(--text)", fontSize: "0.95rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "0.9rem" }}>{label}</p>
     </div>
@@ -84,7 +84,7 @@ export default function BeforeAfter() {
       <div className="container">
         <div className="reveal" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1rem" }}>The Difference</p>
-          <h2 className="title">Before &amp; <span className="gold-text">After</span></h2>
+          <h2 className="title">Before &amp; <span className="accent-text">After</span></h2>
           <div className="rule" />
           <p className="lead" style={{ maxWidth: "420px", margin: "1.4rem auto 0" }}>
             Drag the slider to see the transformation.

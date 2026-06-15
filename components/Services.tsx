@@ -9,26 +9,26 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="section">
+    <section id="services" className="section section-alt">
       <div className="container">
         <div className="reveal" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1rem" }}>What We Offer</p>
-          <h2 className="title">Services &amp; <span className="gold-text">Pricing</span></h2>
+          <h2 className="title">Services &amp; <span className="accent-text">Pricing</span></h2>
           <div className="rule" />
           <p className="lead" style={{ maxWidth: "460px", margin: "1.4rem auto 0" }}>
             Indicative pricing — walk-ins welcome, appointments preferred.
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.5rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.25rem" }}>
           {services.map((s, i) => (
             <div key={s.name} className={`card reveal ${i % 3 === 1 ? "d1" : i % 3 === 2 ? "d2" : ""}`}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.8rem" }}>
-                <h3 className="display" style={{ fontWeight: 700, fontSize: "1.15rem", color: "var(--text)", textTransform: "uppercase", letterSpacing: "0.04em" }}>{s.name}</h3>
-                <span className="gold-text display" style={{ fontWeight: 800, fontSize: "1.25rem", whiteSpace: "nowrap", marginLeft: "1rem" }}>{s.price}</span>
+                <h3 className="display" style={{ fontWeight: 700, fontSize: "1.1rem", color: "var(--text)", textTransform: "uppercase", letterSpacing: "0.04em" }}>{s.name}</h3>
+                <span className="accent-text display" style={{ fontWeight: 800, fontSize: "1.2rem", whiteSpace: "nowrap", marginLeft: "1rem" }}>{s.price}</span>
               </div>
               <p style={{ color: "var(--muted)", fontSize: "0.92rem", lineHeight: 1.7, marginBottom: "1.2rem" }}>{s.desc}</p>
-              <span style={{ fontSize: "0.68rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold-dk)", fontWeight: 600 }}>{s.duration}</span>
+              <span style={{ fontSize: "0.68rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--dim)", fontWeight: 600 }}>{s.duration}</span>
             </div>
           ))}
         </div>

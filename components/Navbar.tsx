@@ -15,7 +15,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -29,10 +29,10 @@ export default function Navbar() {
         right: 0,
         zIndex: 50,
         transition: "background 0.4s, border-color 0.4s, box-shadow 0.4s",
-        background: scrolled ? "rgba(13,13,14,0.82)" : "transparent",
+        background: scrolled ? "rgba(255,255,255,0.97)" : "transparent",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
-        boxShadow: scrolled ? "0 10px 40px rgba(0,0,0,0.45)" : "none",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.08)" : "none",
       }}
     >
       <div
@@ -40,39 +40,56 @@ export default function Navbar() {
           maxWidth: "1180px",
           margin: "0 auto",
           padding: "0 1.5rem",
-          height: "76px",
+          height: "72px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
         {/* Logo */}
-        <a href="#" style={{ textDecoration: "none", lineHeight: 1, display: "flex", alignItems: "center", gap: "0.7rem" }}>
+        <a href="#" style={{ textDecoration: "none", lineHeight: 1, display: "flex", alignItems: "center", gap: "0.65rem" }}>
           <span
             aria-hidden
             style={{
               width: "34px",
               height: "34px",
-              borderRadius: "50% 50% 6px 6px",
-              border: "1px solid var(--gold)",
+              borderRadius: "50%",
+              background: "var(--red)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "var(--gold-lt)",
+              color: "#ffffff",
               fontWeight: 800,
-              fontSize: "0.95rem",
+              fontSize: "0.9rem",
               letterSpacing: 0,
-              boxShadow: "0 0 18px rgba(233,205,146,0.25)",
+              flexShrink: 0,
             }}
             className="brand"
           >
             D
           </span>
           <span>
-            <span className="brand glow" style={{ display: "block", fontSize: "1.05rem", color: "var(--text)", letterSpacing: "0.22em" }}>
-              Desi Cutz
+            <span
+              className="brand"
+              style={{
+                display: "block",
+                fontSize: "1rem",
+                color: scrolled ? "var(--text)" : "#ffffff",
+                letterSpacing: "0.2em",
+                transition: "color 0.4s",
+              }}
+            >
+              Desi <span style={{ color: "var(--red)" }}>Cutz</span>
             </span>
-            <span style={{ display: "block", fontSize: "0.46rem", letterSpacing: "0.42em", textTransform: "uppercase", color: "var(--gold)", marginTop: "3px" }}>
+            <span style={{
+              display: "block",
+              fontSize: "0.44rem",
+              letterSpacing: "0.42em",
+              textTransform: "uppercase",
+              color: scrolled ? "var(--muted)" : "rgba(255,255,255,0.6)",
+              marginTop: "2px",
+              transition: "color 0.4s",
+            }}>
               Men&apos;s Hair Salon
             </span>
           </span>
@@ -81,9 +98,15 @@ export default function Navbar() {
         {/* Desktop nav */}
         <nav style={{ display: "flex", gap: "2.4rem", alignItems: "center" }} className="desktop-nav">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link">{l.label}</a>
+            <a
+              key={l.href}
+              href={l.href}
+              className={scrolled ? "nav-link" : "nav-link-hero"}
+            >
+              {l.label}
+            </a>
           ))}
-          <a href="#booking" className="btn" style={{ padding: "0.65rem 1.5rem", fontSize: "0.72rem" }}>Book Now</a>
+          <a href="#booking" className="btn" style={{ padding: "0.6rem 1.4rem", fontSize: "0.72rem" }}>Book Now</a>
         </nav>
 
         {/* Mobile hamburger */}
@@ -94,15 +117,15 @@ export default function Navbar() {
           aria-label="Menu"
         >
           {[0, 1, 2].map((i) => (
-            <span key={i} style={{ display: "block", width: "24px", height: "1.5px", background: "var(--text)", transition: "all 0.3s" }} />
+            <span key={i} style={{ display: "block", width: "24px", height: "1.5px", background: scrolled ? "var(--text)" : "#ffffff", transition: "all 0.3s" }} />
           ))}
         </button>
       </div>
 
       {open && (
-        <div style={{ background: "rgba(13,13,14,0.97)", borderTop: "1px solid var(--line)", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.3rem" }}>
+        <div style={{ background: "rgba(255,255,255,0.98)", borderTop: "1px solid var(--line)", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.3rem", backdropFilter: "blur(12px)" }}>
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link" onClick={() => setOpen(false)}>{l.label}</a>
+            <a key={l.href} href={l.href} className="nav-link" onClick={() => setOpen(false)} style={{ fontSize: "0.9rem" }}>{l.label}</a>
           ))}
           <a href="#booking" className="btn" style={{ justifyContent: "center" }} onClick={() => setOpen(false)}>Book Now</a>
         </div>

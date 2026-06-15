@@ -20,24 +20,24 @@ export default function About() {
           <div className="reveal">
             <p className="kicker" style={{ marginBottom: "1.2rem" }}>Our Story</p>
             <h2 className="title" style={{ marginBottom: "1.5rem" }}>
-              Grooming, done<br /><span className="gold-text">the proper way</span>
+              Grooming, done<br /><span className="accent-text">the proper way</span>
             </h2>
             <p className="lead" style={{ marginBottom: "1.1rem" }}>
               Desi Cutz is a modern grooming lounge built on old-school craft.
-              Concrete, brass and warm light — a space designed to make every
-              client feel looked after from the moment they walk in.
+              Clean space, sharp tools, and barbers who actually listen — a shop
+              designed to make every client feel looked after.
             </p>
             <p className="lead" style={{ marginBottom: "2.4rem" }}>
               Whether it&apos;s a precise skin fade, a classic scissor cut or a
-              full beard sculpt, our barbers bring the same obsession with detail
-              to every chair.
+              full beard sculpt, we bring the same attention to detail to every
+              chair, every time.
             </p>
 
             {/* Stats */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "2.5rem", marginBottom: "2.4rem" }}>
               {stats.map((s) => (
                 <div key={s.label}>
-                  <div className="display gold-text" style={{ fontSize: "2.4rem", fontWeight: 800, lineHeight: 1 }}>{s.value}</div>
+                  <div className="display accent-text" style={{ fontSize: "2.4rem", fontWeight: 800, lineHeight: 1 }}>{s.value}</div>
                   <div style={{ color: "var(--muted)", fontSize: "0.78rem", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: "0.5rem" }}>{s.label}</div>
                 </div>
               ))}
