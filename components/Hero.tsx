@@ -18,10 +18,10 @@ export default function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1900&q=80')`,
+          backgroundImage: `url('/desi-cutz-glenwood/photos/hero.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "brightness(0.35) saturate(0.8)",
+          filter: "brightness(0.55) saturate(0.85)",
         }}
       />
 
