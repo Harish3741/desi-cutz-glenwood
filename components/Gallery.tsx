@@ -2,12 +2,24 @@
 
 import { useRef, useState } from "react";
 
-// Add your photo paths here once uploaded to /public/photos/
-// e.g. before: "/desi-cutz-glenwood/photos/skin-fade-before.jpg"
+// Replace these with your own photos once ready.
+// Place files in /public/photos/ and update paths to e.g. "/desi-cutz-glenwood/photos/skin-fade-before.jpg"
 const SLOTS = [
-  { label: "Skin Fade",   before: "", after: "" },
-  { label: "Classic Cut", before: "", after: "" },
-  { label: "Beard Shape", before: "", after: "" },
+  {
+    label: "Skin Fade",
+    before: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=800&q=80",
+    after:  "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80",
+  },
+  {
+    label: "Classic Cut",
+    before: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=800&q=80",
+    after:  "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80",
+  },
+  {
+    label: "Beard Shape",
+    before: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?w=800&q=80",
+    after:  "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80",
+  },
 ];
 
 function Placeholder({ text }: { text: string }) {
