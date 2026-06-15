@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Replace these with your own photos once ready.
 // Place files in /public/photos/ and update paths to e.g. "/desi-cutz-glenwood/photos/skin-fade-before.jpg"
@@ -54,13 +54,19 @@ function Slider({ before, after, label }: { before: string; after: string; label
     setPos(Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100)));
   };
 
+  // Global listeners so fast drags outside the container keep tracking
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => { if (dragging.current) updatePos(e.clientX); };
+    const onUp   = () => { dragging.current = false; };
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    return () => { window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+  }, []);
+
   return (
     <div>
       <div
         ref={containerRef}
-        onMouseMove={(e) => { if (dragging.current) updatePos(e.clientX); }}
-        onMouseUp={() => { dragging.current = false; }}
-        onMouseLeave={() => { dragging.current = false; }}
         style={{
           position: "relative", overflow: "hidden",
           cursor: "default",
@@ -72,18 +78,18 @@ function Slider({ before, after, label }: { before: string; after: string; label
         {hasPhotos ? (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={before} alt={`${label} — before`} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={before} alt={`${label} — before`} draggable={false} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", userSelect: "none" }} />
             <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={after} alt={`${label} — after`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src={after} alt={`${label} — after`} draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", userSelect: "none" }} />
             </div>
 
             {/* Slider handle — drag only activates from this element */}
             <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: "2px", background: "var(--red)", transform: "translateX(-50%)", pointerEvents: "none" }}>
               <div
-                onMouseDown={(e) => { e.stopPropagation(); dragging.current = true; updatePos(e.clientX); }}
+                onMouseDown={(e) => { e.preventDefault(); dragging.current = true; updatePos(e.clientX); }}
                 onTouchStart={(e) => { dragging.current = true; updatePos(e.touches[0].clientX); }}
-                onTouchMove={(e) => { if (dragging.current) updatePos(e.touches[0].clientX); }}
+                onTouchMove={(e) => { e.preventDefault(); if (dragging.current) updatePos(e.touches[0].clientX); }}
                 onTouchEnd={() => { dragging.current = false; }}
                 style={{
                   position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
