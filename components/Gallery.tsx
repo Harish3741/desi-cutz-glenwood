@@ -58,15 +58,12 @@ function Slider({ before, after, label }: { before: string; after: string; label
     <div>
       <div
         ref={containerRef}
-        onMouseDown={(e) => { if (!hasPhotos) return; dragging.current = true; updatePos(e.clientX); }}
         onMouseMove={(e) => { if (dragging.current) updatePos(e.clientX); }}
         onMouseUp={() => { dragging.current = false; }}
         onMouseLeave={() => { dragging.current = false; }}
-        onTouchStart={(e) => { if (hasPhotos) updatePos(e.touches[0].clientX); }}
-        onTouchMove={(e) => { if (hasPhotos) updatePos(e.touches[0].clientX); }}
         style={{
           position: "relative", overflow: "hidden",
-          cursor: hasPhotos ? "ew-resize" : "default",
+          cursor: "default",
           userSelect: "none", aspectRatio: "4/3",
           background: "var(--surface)", borderRadius: "14px",
           border: "1px solid var(--line)",
@@ -81,14 +78,20 @@ function Slider({ before, after, label }: { before: string; after: string; label
               <img src={after} alt={`${label} — after`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
 
-            {/* Slider handle */}
+            {/* Slider handle — drag only activates from this element */}
             <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: "2px", background: "var(--red)", transform: "translateX(-50%)", pointerEvents: "none" }}>
-              <div style={{
-                position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-                width: "38px", height: "38px", borderRadius: "50%", background: "var(--red)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 2px 14px rgba(0,0,0,0.3)", color: "#fff", fontSize: "0.8rem", fontWeight: 900, letterSpacing: "-1px",
-              }}>‹›</div>
+              <div
+                onMouseDown={(e) => { e.stopPropagation(); dragging.current = true; updatePos(e.clientX); }}
+                onTouchStart={(e) => { dragging.current = true; updatePos(e.touches[0].clientX); }}
+                onTouchMove={(e) => { if (dragging.current) updatePos(e.touches[0].clientX); }}
+                onTouchEnd={() => { dragging.current = false; }}
+                style={{
+                  position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
+                  width: "38px", height: "38px", borderRadius: "50%", background: "var(--red)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  boxShadow: "0 2px 14px rgba(0,0,0,0.3)", color: "#fff", fontSize: "0.8rem", fontWeight: 900, letterSpacing: "-1px",
+                  cursor: "ew-resize", pointerEvents: "all",
+                }}>‹›</div>
             </div>
 
             <span style={{ position: "absolute", top: "0.7rem", left: "0.7rem", background: "rgba(0,0,0,0.55)", color: "#fff", fontSize: "0.62rem", letterSpacing: "0.18em", textTransform: "uppercase", padding: "3px 9px", borderRadius: "4px" }}>Before</span>
