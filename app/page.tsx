@@ -13,7 +13,7 @@ import PageLoader from "@/components/PageLoader";
 export default function Home() {
   return (
     <>
-      <div className="gold-top-bar" />
+      <div className="accent-top-bar" />
       <PageLoader />
       <Navbar />
       <main>

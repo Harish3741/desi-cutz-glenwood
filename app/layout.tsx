@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Playfair_Display, Cinzel_Decorative } from "next/font/google";
+import { Geist, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-fraunces",
   display: "swap",
-});
-
-const cinzel = Cinzel_Decorative({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-  variable: "--font-cinzel",
-  display: "swap",
+  weight: ["400", "500", "600", "700", "900"],
 });
 
 const SITE_URL = "https://harish3741.github.io/desi-cutz-glenwood";
@@ -91,7 +85,7 @@ const schemaOrg = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.className} ${playfair.variable} ${cinzel.variable}`}>
+    <html lang="en" className={`${geist.className} ${fraunces.variable}`}>
       <head>
         <script
           type="application/ld+json"

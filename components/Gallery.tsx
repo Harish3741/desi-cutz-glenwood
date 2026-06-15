@@ -35,16 +35,14 @@ export default function Gallery() {
   }, [lightbox]);
 
   return (
-    <section id="gallery" style={{ padding: "7rem 1.5rem", background: "var(--dark-2)" }}>
+    <section id="gallery" style={{ padding: "7rem 1.5rem", background: "var(--charcoal)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <div className="fade-up" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <p style={{ color: "var(--gold)", letterSpacing: "0.35em", textTransform: "uppercase", fontSize: "0.7rem", fontWeight: 600, marginBottom: "0.8rem" }}>
-            Our Work
-          </p>
-          <h2 className="heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#fff", marginBottom: "1rem" }}>
-            <span style={{ color: "var(--gold)" }}>Gallery</span>
+          <p className="eyebrow" style={{ color: "#e8b88f", marginBottom: "0.8rem" }}>Our Work</p>
+          <h2 className="display" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "var(--cream)" }}>
+            The <span style={{ color: "var(--rust)" }}>Gallery</span>
           </h2>
-          <div className="gold-line" />
+          <div className="accent-line" />
         </div>
 
         <div
@@ -64,7 +62,7 @@ export default function Gallery() {
                 position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
                 opacity: 0, transition: "opacity 0.3s", background: "rgba(0,0,0,0.3)",
               }} className="gallery-overlay">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f7f1e7" strokeWidth="1.5">
                   <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
                   <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
                 </svg>
@@ -73,8 +71,8 @@ export default function Gallery() {
           ))}
         </div>
 
-        <p style={{ textAlign: "center", marginTop: "1.5rem", color: "#444", fontSize: "0.78rem", letterSpacing: "0.05em" }}>
-          Placeholder photos — real work coming soon · Click any photo to expand
+        <p style={{ textAlign: "center", marginTop: "1.75rem", color: "var(--cream-dim)", fontSize: "0.8rem", letterSpacing: "0.04em" }}>
+          Tap any photo to view it full size
         </p>
       </div>
 
@@ -96,7 +94,7 @@ export default function Gallery() {
           {/* Prev */}
           <button
             onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + images.length) % images.length); }}
-            style={{ position: "absolute", left: "1.5rem", background: "none", border: "1px solid #444", color: "var(--gold)", width: "44px", height: "44px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "2px" }}
+            style={{ position: "absolute", left: "1.5rem", background: "none", border: "1px solid #444", color: "var(--rust)", width: "44px", height: "44px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "2px" }}
           >‹</button>
 
           {/* Image */}
@@ -111,7 +109,7 @@ export default function Gallery() {
           {/* Next */}
           <button
             onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % images.length); }}
-            style={{ position: "absolute", right: "1.5rem", background: "none", border: "1px solid #444", color: "var(--gold)", width: "44px", height: "44px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "2px" }}
+            style={{ position: "absolute", right: "1.5rem", background: "none", border: "1px solid #444", color: "var(--rust)", width: "44px", height: "44px", cursor: "pointer", fontSize: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "2px" }}
           >›</button>
 
           {/* Counter */}

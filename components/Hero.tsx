@@ -10,7 +10,7 @@ export default function Hero() {
         justifyContent: "center",
         textAlign: "center",
         overflow: "hidden",
-        background: "var(--dark)",
+        background: "var(--charcoal)",
       }}
     >
       {/* Background image */}
@@ -21,90 +21,54 @@ export default function Hero() {
           backgroundImage: `url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1800&q=80')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "brightness(0.18) contrast(1.1)",
+          filter: "brightness(0.42) saturate(1.05)",
         }}
       />
 
-      {/* Vignette overlay */}
+      {/* Warm gradient overlay for legibility */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.85) 100%)",
+          background:
+            "linear-gradient(180deg, rgba(34,28,23,0.55) 0%, rgba(34,28,23,0.35) 45%, rgba(34,28,23,0.78) 100%)",
         }}
       />
-
-      {/* Subtle gold vertical lines */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          justifyContent: "center",
-          gap: "80px",
-          opacity: 0.04,
-          pointerEvents: "none",
-        }}
-      >
-        {[...Array(6)].map((_, i) => (
-          <div key={i} style={{ width: "1px", background: "var(--gold)", height: "100%" }} />
-        ))}
-      </div>
 
       {/* Content */}
       <div style={{ position: "relative", zIndex: 10, padding: "0 1.5rem" }}>
-        <p
-          style={{
-            color: "var(--gold)",
-            letterSpacing: "0.5em",
-            textTransform: "uppercase",
-            fontSize: "0.7rem",
-            marginBottom: "2rem",
-            fontWeight: 500,
-          }}
-        >
+        <p className="eyebrow" style={{ color: "#e8b88f", marginBottom: "1.6rem" }}>
           Glenwood, NSW · Est. 2010
         </p>
 
         <h1
-          className="heading"
+          className="display"
           style={{
-            fontSize: "clamp(4rem, 10vw, 9rem)",
+            fontSize: "clamp(3.5rem, 10vw, 8.5rem)",
             fontWeight: 900,
-            lineHeight: 1,
-            color: "#fff",
+            lineHeight: 0.95,
+            color: "#f7f1e7",
             marginBottom: "1.5rem",
           }}
         >
-          Desi <span style={{ color: "var(--gold)" }}>Cutz</span>
+          Desi <span style={{ color: "var(--rust)" }}>Cutz</span>
         </h1>
-
-        <div
-          style={{
-            width: "60px",
-            height: "1px",
-            background: "var(--gold)",
-            margin: "0 auto 1.5rem",
-            opacity: 0.7,
-          }}
-        />
 
         <p
           style={{
-            color: "#999",
-            fontSize: "0.85rem",
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            margin: "0 auto 3rem",
-            maxWidth: "320px",
+            color: "rgba(247,241,231,0.85)",
+            fontSize: "1.05rem",
+            lineHeight: 1.6,
+            margin: "0 auto 2.6rem",
+            maxWidth: "440px",
           }}
         >
-          Premium cuts &amp; grooming
+          Sharp cuts, clean fades and proper grooming — in the heart of Glenwood.
         </p>
 
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="#booking" className="btn-gold">Book Appointment</a>
-          <a href="#services" className="btn-ghost">Our Services</a>
+          <a href="#booking" className="btn">Book Appointment</a>
+          <a href="#services" className="btn-outline-light">Our Services</a>
         </div>
       </div>
 
@@ -119,13 +83,13 @@ export default function Hero() {
           flexDirection: "column",
           alignItems: "center",
           gap: "6px",
-          opacity: 0.4,
+          opacity: 0.55,
         }}
       >
-        <span style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#888" }}>
+        <span style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(247,241,231,0.8)" }}>
           Scroll
         </span>
-        <div style={{ width: "1px", height: "40px", background: "linear-gradient(to bottom, var(--gold), transparent)" }} />
+        <div style={{ width: "1px", height: "40px", background: "linear-gradient(to bottom, #e8b88f, transparent)" }} />
       </div>
     </section>
   );

@@ -27,23 +27,21 @@ export default function FAQ() {
   }, []);
 
   return (
-    <section id="faq" style={{ padding: "7rem 1.5rem", background: "var(--dark-2)", borderTop: "1px solid #1c1c1c" }}>
+    <section id="faq" style={{ padding: "7rem 1.5rem", background: "var(--cream)" }}>
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <div className="fade-up" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <p style={{ color: "var(--gold)", letterSpacing: "0.35em", textTransform: "uppercase", fontSize: "0.7rem", fontWeight: 600, marginBottom: "0.8rem" }}>
-            Got Questions?
-          </p>
-          <h2 className="heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#fff", marginBottom: "1rem" }}>
-            Frequently Asked <span style={{ color: "var(--gold)" }}>Questions</span>
+          <p className="eyebrow" style={{ marginBottom: "0.8rem" }}>Got Questions?</p>
+          <h2 className="display" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "var(--ink)" }}>
+            Frequently Asked <span style={{ color: "var(--rust)" }}>Questions</span>
           </h2>
-          <div className="gold-line" />
+          <div className="accent-line" />
         </div>
 
         <div className="fade-up" style={{ display: "flex", flexDirection: "column", gap: "0" }}>
           {faqs.map((faq, i) => (
             <div
               key={i}
-              style={{ borderBottom: "1px solid #1e1e1e", overflow: "hidden" }}
+              style={{ borderBottom: "1px solid var(--line)", overflow: "hidden" }}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
@@ -60,12 +58,12 @@ export default function FAQ() {
                   textAlign: "left",
                 }}
               >
-                <span style={{ color: open === i ? "var(--gold)" : "#ddd", fontWeight: 600, fontSize: "0.95rem", transition: "color 0.3s", lineHeight: 1.4 }}>
+                <span style={{ color: open === i ? "var(--rust)" : "var(--ink)", fontWeight: 600, fontSize: "1rem", transition: "color 0.3s", lineHeight: 1.4 }}>
                   {faq.q}
                 </span>
                 <span
                   style={{
-                    color: "var(--gold)",
+                    color: "var(--rust)",
                     fontSize: "1.1rem",
                     flexShrink: 0,
                     transition: "transform 0.3s",
@@ -86,7 +84,7 @@ export default function FAQ() {
                   transition: "max-height 0.35s ease",
                 }}
               >
-                <p style={{ color: "#777", fontSize: "0.9rem", lineHeight: 1.8, paddingBottom: "1.4rem" }}>
+                <p style={{ color: "var(--body)", fontSize: "0.92rem", lineHeight: 1.8, paddingBottom: "1.4rem" }}>
                   {faq.a}
                 </p>
               </div>
@@ -95,8 +93,8 @@ export default function FAQ() {
         </div>
 
         <div className="fade-up" style={{ textAlign: "center", marginTop: "3rem" }}>
-          <p style={{ color: "#555", fontSize: "0.88rem", marginBottom: "1rem" }}>Still have a question?</p>
-          <a href="tel:0286250010" className="btn-ghost">Call Us</a>
+          <p style={{ color: "var(--muted)", fontSize: "0.92rem", marginBottom: "1rem" }}>Still have a question?</p>
+          <a href="tel:0286250010" className="btn-outline">Call Us</a>
         </div>
       </div>
     </section>

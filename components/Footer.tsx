@@ -2,9 +2,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "var(--dark)",
-        borderTop: "1px solid #1c1c1c",
-        padding: "3rem 1.5rem",
+        background: "var(--charcoal)",
+        padding: "3.5rem 1.5rem",
         textAlign: "center",
       }}
     >
@@ -19,15 +18,15 @@ export default function Footer() {
         >
           {/* Logo */}
           <span
+            className="display"
             style={{
               fontWeight: 900,
-              fontSize: "1.4rem",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#fff",
+              fontSize: "1.6rem",
+              letterSpacing: "-0.01em",
+              color: "var(--cream)",
             }}
           >
-            Desi<span style={{ color: "var(--gold)" }}>Cutz</span>
+            Desi<span style={{ color: "var(--rust)" }}>Cutz</span>
           </span>
 
           {/* Nav links */}
@@ -37,7 +36,7 @@ export default function Footer() {
                 key={href}
                 href={href}
                 style={{
-                  color: "#666",
+                  color: "var(--cream-dim)",
                   fontSize: "0.78rem",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
@@ -51,16 +50,16 @@ export default function Footer() {
           </nav>
 
           {/* Divider */}
-          <div style={{ width: "40px", height: "1px", background: "#2a2a2a" }} />
+          <div style={{ width: "40px", height: "1px", background: "var(--line-dark)" }} />
 
-          <p style={{ color: "#444", fontSize: "0.78rem" }}>
+          <p style={{ color: "var(--cream-dim)", fontSize: "0.8rem" }}>
             Shop 3/60 Glenwood Park Dr, Glenwood NSW 2768 &nbsp;·&nbsp;{" "}
-            <a href="tel:0286250010" style={{ color: "#555", textDecoration: "none" }}>
+            <a href="tel:0286250010" className="footer-link" style={{ color: "var(--cream-dim)", textDecoration: "none" }}>
               (02) 8625 0010
             </a>
           </p>
 
-          <p style={{ color: "#333", fontSize: "0.72rem" }}>
+          <p style={{ color: "var(--muted)", fontSize: "0.72rem" }}>
             © {new Date().getFullYear()} Desi Cutz Glenwood. All rights reserved.
           </p>
         </div>

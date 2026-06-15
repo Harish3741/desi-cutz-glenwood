@@ -27,17 +27,15 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" style={{ padding: "7rem 1.5rem", background: "var(--dark)" }}>
+    <section id="services" style={{ padding: "7rem 1.5rem", background: "var(--cream-2)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <div className="fade-up" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <p style={{ color: "var(--gold)", letterSpacing: "0.35em", textTransform: "uppercase", fontSize: "0.7rem", fontWeight: 600, marginBottom: "0.8rem" }}>
-            What We Offer
-          </p>
-          <h2 className="heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#fff", marginBottom: "1rem" }}>
-            Services &amp; <span style={{ color: "var(--gold)" }}>Pricing</span>
+          <p className="eyebrow" style={{ marginBottom: "0.8rem" }}>What We Offer</p>
+          <h2 className="display" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "var(--ink)" }}>
+            Services &amp; <span style={{ color: "var(--rust)" }}>Pricing</span>
           </h2>
-          <div className="gold-line" />
-          <p style={{ color: "#666", fontSize: "0.9rem", maxWidth: "420px", margin: "0 auto" }}>
+          <div className="accent-line" />
+          <p style={{ color: "var(--muted)", fontSize: "0.95rem", maxWidth: "440px", margin: "0 auto" }}>
             All prices are indicative — walk-ins welcome, appointments preferred.
           </p>
         </div>
@@ -48,18 +46,18 @@ export default function Services() {
         >
           {services.map((s) => (
             <div key={s.name} className="service-card">
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.8rem" }}>
-                <h3 style={{ fontWeight: 700, fontSize: "1rem", color: "#fff", letterSpacing: "0.02em" }}>{s.name}</h3>
-                <span style={{ color: "var(--gold)", fontWeight: 800, fontSize: "1.1rem", whiteSpace: "nowrap", marginLeft: "1rem" }}>{s.price}</span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.7rem" }}>
+                <h3 className="display" style={{ fontWeight: 600, fontSize: "1.2rem", color: "var(--ink)" }}>{s.name}</h3>
+                <span className="display" style={{ color: "var(--rust)", fontWeight: 700, fontSize: "1.25rem", whiteSpace: "nowrap", marginLeft: "1rem" }}>{s.price}</span>
               </div>
-              <p style={{ color: "#777", fontSize: "0.88rem", lineHeight: 1.7, marginBottom: "1rem" }}>{s.desc}</p>
-              <span style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#444", fontWeight: 600 }}>{s.duration}</span>
+              <p style={{ color: "var(--body)", fontSize: "0.92rem", lineHeight: 1.65, marginBottom: "1rem" }}>{s.desc}</p>
+              <span style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--tan)", fontWeight: 600 }}>{s.duration}</span>
             </div>
           ))}
         </div>
 
         <div className="fade-up" style={{ textAlign: "center", marginTop: "3rem" }}>
-          <a href="#booking" className="btn-gold">Book a Service</a>
+          <a href="#booking" className="btn">Book a Service</a>
         </div>
       </div>
     </section>

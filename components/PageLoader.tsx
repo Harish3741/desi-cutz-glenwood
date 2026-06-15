@@ -19,7 +19,7 @@ export default function PageLoader() {
       style={{
         position: "fixed",
         inset: 0,
-        background: "var(--dark)",
+        background: "var(--charcoal)",
         zIndex: 9999,
         display: "flex",
         flexDirection: "column",
@@ -32,26 +32,24 @@ export default function PageLoader() {
       }}
     >
       <div
+        className="display"
         style={{
-          fontFamily: "var(--font-cinzel)",
           fontWeight: 900,
-          fontSize: "2rem",
-          letterSpacing: "0.1em",
-          color: "#c8102e",
-          textShadow: "1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff",
-          textTransform: "uppercase",
+          fontSize: "2.4rem",
+          letterSpacing: "-0.01em",
+          color: "var(--cream)",
         }}
       >
-        Desi Cutz
+        Desi<span style={{ color: "var(--rust)" }}>Cutz</span>
       </div>
 
-      {/* Animated gold bar */}
-      <div style={{ width: "120px", height: "1px", background: "#1c1c1c", position: "relative", overflow: "hidden" }}>
+      {/* Animated accent bar */}
+      <div style={{ width: "120px", height: "2px", background: "var(--line-dark)", position: "relative", overflow: "hidden", borderRadius: "2px" }}>
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: "var(--gold)",
+            background: "var(--rust)",
             animation: "loader-bar 0.9s ease-out forwards",
           }}
         />

@@ -47,7 +47,8 @@ function Slider({ before, after, label }: { before: string; after: string; label
           cursor: "ew-resize",
           userSelect: "none",
           aspectRatio: "4/3",
-          background: "var(--dark-3)",
+          background: "var(--cream-3)",
+          borderRadius: "8px",
         }}
       >
         {/* Before */}
@@ -61,24 +62,24 @@ function Slider({ before, after, label }: { before: string; after: string; label
         </div>
 
         {/* Divider line */}
-        <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: "2px", background: "var(--gold)", transform: "translateX(-50%)" }}>
+        <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: "2px", background: "var(--rust)", transform: "translateX(-50%)" }}>
           {/* Handle */}
           <div style={{
             position: "absolute", top: "50%", left: "50%",
             transform: "translate(-50%, -50%)",
             width: "36px", height: "36px", borderRadius: "50%",
-            background: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 0 12px rgba(201,168,76,0.5)",
+            background: "var(--rust)", display: "flex", alignItems: "center", justifyContent: "center",
+            boxShadow: "0 2px 10px rgba(34,28,23,0.35)",
           }}>
-            <span style={{ color: "#000", fontSize: "0.75rem", fontWeight: 900, letterSpacing: "-1px" }}>‹›</span>
+            <span style={{ color: "#fff", fontSize: "0.75rem", fontWeight: 900, letterSpacing: "-1px" }}>‹›</span>
           </div>
         </div>
 
         {/* Labels */}
-        <span style={{ position: "absolute", top: "0.7rem", left: "0.7rem", background: "rgba(0,0,0,0.7)", color: "#888", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 8px" }}>Before</span>
-        <span style={{ position: "absolute", top: "0.7rem", right: "0.7rem", background: "rgba(201,168,76,0.15)", color: "var(--gold)", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 8px", border: "1px solid rgba(201,168,76,0.3)" }}>After</span>
+        <span style={{ position: "absolute", top: "0.7rem", left: "0.7rem", background: "rgba(34,28,23,0.78)", color: "#f7f1e7", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 8px", borderRadius: "3px" }}>Before</span>
+        <span style={{ position: "absolute", top: "0.7rem", right: "0.7rem", background: "var(--rust)", color: "#fff", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 8px", borderRadius: "3px" }}>After</span>
       </div>
-      <p style={{ textAlign: "center", color: "#777", fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.75rem" }}>{label}</p>
+      <p className="display" style={{ textAlign: "center", color: "var(--ink)", fontSize: "1rem", fontWeight: 600, marginTop: "0.85rem" }}>{label}</p>
     </div>
   );
 }
@@ -95,18 +96,16 @@ export default function BeforeAfter() {
   }, []);
 
   return (
-    <section id="transformations" style={{ padding: "7rem 1.5rem", background: "var(--dark)" }}>
+    <section id="transformations" style={{ padding: "7rem 1.5rem", background: "var(--cream)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <div className="fade-up" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <p style={{ color: "var(--gold)", letterSpacing: "0.35em", textTransform: "uppercase", fontSize: "0.7rem", fontWeight: 600, marginBottom: "0.8rem" }}>
-            The Desi Cutz Difference
-          </p>
-          <h2 className="heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#fff", marginBottom: "1rem" }}>
-            Before &amp; <span style={{ color: "var(--gold)" }}>After</span>
+          <p className="eyebrow" style={{ marginBottom: "0.8rem" }}>The Desi Cutz Difference</p>
+          <h2 className="display" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "var(--ink)" }}>
+            Before &amp; <span style={{ color: "var(--rust)" }}>After</span>
           </h2>
-          <div className="gold-line" />
-          <p style={{ color: "#666", fontSize: "0.88rem", maxWidth: "380px", margin: "0 auto" }}>
-            Drag the slider to see the transformation. Placeholder photos — real cuts coming soon.
+          <div className="accent-line" />
+          <p style={{ color: "var(--muted)", fontSize: "0.92rem", maxWidth: "400px", margin: "0 auto" }}>
+            Drag the slider to see the transformation.
           </p>
         </div>
 

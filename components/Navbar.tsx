@@ -20,6 +20,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Light text over the dark hero; dark text once a cream bar appears on scroll.
+  const onLight = scrolled;
+  const textColor = onLight ? "var(--ink)" : "#f7f1e7";
+  const subColor = onLight ? "var(--muted)" : "rgba(247,241,231,0.7)";
+
   return (
     <header
       style={{
@@ -28,10 +33,11 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: "background 0.4s, border-color 0.4s",
-        background: scrolled ? "rgba(10,10,10,0.97)" : "transparent",
-        borderBottom: scrolled ? "1px solid #222" : "1px solid transparent",
+        transition: "background 0.4s, border-color 0.4s, box-shadow 0.4s",
+        background: scrolled ? "rgba(247,241,231,0.92)" : "transparent",
+        borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
         backdropFilter: scrolled ? "blur(10px)" : "none",
+        boxShadow: scrolled ? "0 4px 20px rgba(34,28,23,0.06)" : "none",
       }}
     >
       <div
@@ -39,7 +45,7 @@ export default function Navbar() {
           maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 1.5rem",
-          height: "70px",
+          height: "72px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -48,28 +54,26 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" style={{ textDecoration: "none", lineHeight: 1 }}>
           <div
+            className="display"
             style={{
-              fontFamily: "var(--font-cinzel)",
               fontWeight: 900,
-              fontSize: "1.3rem",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "#c8102e",
-              textShadow: "1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 2px 2px 4px rgba(0,0,0,0.8)",
+              fontSize: "1.5rem",
+              letterSpacing: "-0.01em",
+              color: textColor,
               lineHeight: 1,
+              transition: "color 0.4s",
             }}
           >
-            Desi Cutz
+            Desi<span style={{ color: "var(--rust)" }}>Cutz</span>
           </div>
           <div
             style={{
-              fontFamily: "var(--font-cinzel)",
-              fontSize: "0.42rem",
-              letterSpacing: "0.35em",
+              fontSize: "0.5rem",
+              letterSpacing: "0.32em",
               textTransform: "uppercase",
-              color: "#ccc",
-              textAlign: "center",
-              marginTop: "3px",
+              color: subColor,
+              marginTop: "4px",
+              transition: "color 0.4s",
             }}
           >
             Men&apos;s Hair Salon
@@ -77,11 +81,15 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav style={{ display: "flex", gap: "2.5rem", alignItems: "center" }} className="desktop-nav">
+        <nav style={{ display: "flex", gap: "2.4rem", alignItems: "center" }} className="desktop-nav">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link">{l.label}</a>
+            <a key={l.href} href={l.href} className="nav-link" style={{ color: textColor, transition: "color 0.4s" }}>
+              {l.label}
+            </a>
           ))}
-          <a href="#booking" className="btn-gold" style={{ padding: "0.6rem 1.4rem" }}>Book Now</a>
+          <a href="#booking" className="btn" style={{ padding: "0.6rem 1.4rem", fontSize: "0.85rem" }}>
+            Book Now
+          </a>
         </nav>
 
         {/* Mobile hamburger */}
@@ -92,17 +100,21 @@ export default function Navbar() {
           aria-label="Menu"
         >
           {[0, 1, 2].map((i) => (
-            <span key={i} style={{ display: "block", width: "24px", height: "1.5px", background: "#fff", transition: "all 0.3s" }} />
+            <span key={i} style={{ display: "block", width: "24px", height: "2px", background: textColor, transition: "all 0.3s" }} />
           ))}
         </button>
       </div>
 
       {open && (
-        <div style={{ background: "rgba(10,10,10,0.98)", borderTop: "1px solid #222", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+        <div style={{ background: "rgba(247,241,231,0.98)", borderTop: "1px solid var(--line)", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.2rem" }}>
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link" onClick={() => setOpen(false)}>{l.label}</a>
+            <a key={l.href} href={l.href} className="nav-link" style={{ color: "var(--ink)" }} onClick={() => setOpen(false)}>
+              {l.label}
+            </a>
           ))}
-          <a href="#booking" className="btn-gold" style={{ textAlign: "center" }} onClick={() => setOpen(false)}>Book Now</a>
+          <a href="#booking" className="btn" style={{ textAlign: "center" }} onClick={() => setOpen(false)}>
+            Book Now
+          </a>
         </div>
       )}
 
