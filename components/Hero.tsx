@@ -73,10 +73,10 @@ export default function Hero() {
 
         {/* Trust row */}
         <div style={{ display: "inline-flex", alignItems: "center", gap: "0.7rem", color: "rgba(255,255,255,0.6)", fontSize: "0.82rem", letterSpacing: "0.04em" }}>
-          <span className="stars" style={{ fontSize: "0.95rem" }}>★★★★★</span>
-          <span style={{ color: "#ffffff", fontWeight: 600 }}>5.0</span>
+          <span className="stars" style={{ fontSize: "0.95rem" }}>★★★★☆</span>
+          <span style={{ color: "#ffffff", fontWeight: 600 }}>4.4</span>
           <span style={{ opacity: 0.4 }}>·</span>
-          <span>50+ Google reviews</span>
+          <span>300+ Google reviews</span>
         </div>
       </div>
 
