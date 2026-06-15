@@ -1,14 +1,9 @@
 const reviews = [
-  { name: "Amir K.",   rating: 5, text: "Best barber shop in the area, hands down. Been coming here 3 years and never had a bad cut. The skin fades are next level.", service: "Skin Fade" },
-  { name: "Liam T.",   rating: 5, text: "Great experience every time. Staff are friendly and take their time to make sure you're happy. Never disappointed.", service: "Classic Cut" },
-  { name: "Ryan M.",   rating: 4, text: "Solid barbershop. Prices are fair and the guys know what they're doing. Can get busy on weekends so book ahead.", service: "Skin Fade" },
-  { name: "Priya S.",  rating: 5, text: "Took my boys here for their haircuts and they loved it. Staff were patient and did a great job with the kids.", service: "Kids Cut" },
-  { name: "Daniel W.", rating: 5, text: "Best fade in Glenwood. Always leave looking fresh. Highly recommend the cut and beard combo — absolutely worth it.", service: "Cut + Beard" },
-  { name: "Jason L.",  rating: 4, text: "Good barbers who know their stuff. Nice clean shop. Really happy with the haircut — will definitely be back.", service: "Classic Cut" },
-  { name: "Sam O.",    rating: 5, text: "My go-to barbershop. They always nail the skin fade and the beard trim is spotless every time. Absolute legends.", service: "Skin Fade + Beard" },
-  { name: "Chris P.",  rating: 4, text: "Really happy with my haircut. Came in as a walk-in and didn't have to wait long at all. Great value too.", service: "Classic Cut" },
-  { name: "Meera J.",  rating: 5, text: "Friendly service and great attention to detail. My son absolutely loves coming here, which honestly says everything.", service: "Kids Cut" },
-  { name: "Tyler B.",  rating: 5, text: "Came in for a beard shape and left looking completely different — in the best way. These guys really know their craft.", service: "Beard Shape" },
+  { name: "Mike Smith",      rating: 5, text: "Coming here for the last 2 years — always the best haircuts, never disappointed.", service: "Children's cuts · Scissor cut · Beard trim" },
+  { name: "Raj Kalsi",       rating: 5, text: "Just had a haircut with George — top-notch experience! Super chill atmosphere, and George really knows his craft. Definitely coming back!", service: "Scissor cut" },
+  { name: "Malk Pannu",      rating: 5, text: "Great place for solid cuts. Super friendly staff and super service!!", service: "" },
+  { name: "Heaven Malhotra", rating: 5, text: "What a place. I was searching for a good barber for a long time. They actually know how to cut hair. Strongly recommended.", service: "" },
+  { name: "Rohit",           rating: 5, text: "Great bunch of boys, quality cuts and affordable. Been coming here for years and definitely the best barber in the area — also much cheaper than others. Highly recommended.", service: "" },
 ];
 
 function Stars({ rating }: { rating: number }) {
@@ -47,7 +42,9 @@ function ReviewCard({ name, rating, text, service }: { name: string; rating: num
         }} className="display">{name.charAt(0)}</span>
         <div>
           <div style={{ color: "var(--text)", fontWeight: 600, fontSize: "0.88rem" }}>{name}</div>
-          <div style={{ color: "var(--dim)", fontSize: "0.7rem", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "1px" }}>{service}</div>
+          {service && (
+            <div style={{ color: "var(--dim)", fontSize: "0.7rem", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "1px" }}>{service}</div>
+          )}
         </div>
       </div>
     </div>
