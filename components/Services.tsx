@@ -33,9 +33,6 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="reveal" style={{ textAlign: "center", marginTop: "3rem" }}>
-          <a href="#booking" className="btn">Book a Service</a>
-        </div>
       </div>
     </section>
   );
