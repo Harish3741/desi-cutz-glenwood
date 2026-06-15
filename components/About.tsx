@@ -1,104 +1,64 @@
-"use client";
-
-import { useEffect } from "react";
-
 const stats = [
-  { value: "10+", label: "Years Experience" },
-  { value: "5★", label: "Google Rating" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "10+", label: "Years Open" },
+  { value: "5.0★", label: "Google Rating" },
+  { value: "15k+", label: "Cuts & Counting" },
 ];
 
 export default function About() {
-  useEffect(() => {
-    const els = document.querySelectorAll(".fade-up");
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-
   return (
-    <section
-      id="about"
-      style={{
-        padding: "7rem 1.5rem",
-        background: "var(--cream)",
-      }}
-    >
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+    <section id="about" className="section">
+      <div className="container">
         <div
-          className="fade-up"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "4rem",
+            gap: "clamp(2.5rem, 6vw, 5rem)",
             alignItems: "center",
           }}
         >
           {/* Text */}
-          <div>
-            <p className="eyebrow" style={{ marginBottom: "1rem" }}>Our Story</p>
-            <h2
-              className="display"
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 700,
-                color: "var(--ink)",
-                lineHeight: 1.1,
-                marginBottom: "1.5rem",
-              }}
-            >
-              More Than Just{" "}
-              <span style={{ color: "var(--rust)" }}>a Haircut</span>
+          <div className="reveal">
+            <p className="kicker" style={{ marginBottom: "1.2rem" }}>Our Story</p>
+            <h2 className="title" style={{ marginBottom: "1.5rem" }}>
+              Grooming, done<br /><span className="gold-text">the proper way</span>
             </h2>
-            <p style={{ color: "var(--body)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "1rem" }}>
-              At Desi Cutz Glenwood, we blend traditional barbering craft with
-              modern technique. Nestled in the heart of Glenwood, our shop is a
-              place where every client walks out feeling sharp and confident.
+            <p className="lead" style={{ marginBottom: "1.1rem" }}>
+              Desi Cutz is a modern grooming lounge built on old-school craft.
+              Concrete, brass and warm light — a space designed to make every
+              client feel looked after from the moment they walk in.
             </p>
-            <p style={{ color: "var(--body)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "2.5rem" }}>
-              Whether you&apos;re in for a classic cut, a skin fade, or a full
-              grooming session, our skilled barbers deliver precision and style
-              every single time.
+            <p className="lead" style={{ marginBottom: "2.4rem" }}>
+              Whether it&apos;s a precise skin fade, a classic scissor cut or a
+              full beard sculpt, our barbers bring the same obsession with detail
+              to every chair.
             </p>
+
+            {/* Stats */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "2.5rem", marginBottom: "2.4rem" }}>
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <div className="display gold-text" style={{ fontSize: "2.4rem", fontWeight: 800, lineHeight: 1 }}>{s.value}</div>
+                  <div style={{ color: "var(--muted)", fontSize: "0.78rem", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: "0.5rem" }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+
             <a href="#booking" className="btn">Book Your Visit</a>
           </div>
 
-          {/* Stats */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                style={{
-                  background: "#fff",
-                  border: "1px solid var(--line)",
-                  borderRadius: "10px",
-                  padding: "1.5rem 2rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1.5rem",
-                }}
-              >
-                <span
-                  className="display"
-                  style={{ fontSize: "2.8rem", fontWeight: 900, color: "var(--rust)", lineHeight: 1, minWidth: "84px" }}
-                >
-                  {s.value}
-                </span>
-                <span style={{ color: "var(--ink)", fontWeight: 600, letterSpacing: "0.02em", fontSize: "0.95rem" }}>
-                  {s.label}
-                </span>
-              </div>
-            ))}
+          {/* Arched portrait */}
+          <div className="reveal d1" style={{ display: "flex", justifyContent: "center" }}>
+            <div
+              className="arch arch-frame"
+              style={{ width: "100%", maxWidth: "380px", aspectRatio: "3/4" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=80"
+                alt="Barber sculpting a client's beard at Desi Cutz"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
           </div>
         </div>
       </div>

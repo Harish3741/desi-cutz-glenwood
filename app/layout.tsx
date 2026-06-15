@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Fraunces } from "next/font/google";
+import { Geist, Archivo } from "next/font/google";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
 
-const fraunces = Fraunces({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-archivo",
   display: "swap",
-  weight: ["400", "500", "600", "700", "900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const SITE_URL = "https://harish3741.github.io/desi-cutz-glenwood";
@@ -85,7 +85,7 @@ const schemaOrg = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.className} ${fraunces.variable}`}>
+    <html lang="en" className={`${geist.className} ${archivo.variable}`}>
       <head>
         <script
           type="application/ld+json"

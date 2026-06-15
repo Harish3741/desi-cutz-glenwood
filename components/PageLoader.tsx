@@ -19,37 +19,28 @@ export default function PageLoader() {
       style={{
         position: "fixed",
         inset: 0,
-        background: "var(--charcoal)",
+        background: "var(--bg)",
         zIndex: 9999,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: "1.5rem",
+        gap: "1.6rem",
         transition: "opacity 0.6s ease",
         opacity: fading ? 0 : 1,
         pointerEvents: fading ? "none" : "all",
       }}
     >
-      <div
-        className="display"
-        style={{
-          fontWeight: 900,
-          fontSize: "2.4rem",
-          letterSpacing: "-0.01em",
-          color: "var(--cream)",
-        }}
-      >
-        Desi<span style={{ color: "var(--rust)" }}>Cutz</span>
+      <div className="brand glow" style={{ fontSize: "2rem", color: "var(--text)", letterSpacing: "0.22em" }}>
+        Desi <span className="gold-text">Cutz</span>
       </div>
 
-      {/* Animated accent bar */}
-      <div style={{ width: "120px", height: "2px", background: "var(--line-dark)", position: "relative", overflow: "hidden", borderRadius: "2px" }}>
+      <div style={{ width: "130px", height: "2px", background: "var(--line)", position: "relative", overflow: "hidden", borderRadius: "2px" }}>
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: "var(--rust)",
+            background: "var(--gold-grad)",
             animation: "loader-bar 0.9s ease-out forwards",
           }}
         />
