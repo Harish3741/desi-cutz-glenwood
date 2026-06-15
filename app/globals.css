@@ -24,6 +24,22 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.heading {
+  font-family: var(--font-playfair);
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.gold-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  z-index: 100;
+}
+
 .gold-line {
   width: 60px;
   height: 2px;
@@ -65,11 +81,12 @@ body {
   border: 1px solid #2a2a2a;
   border-top: 2px solid var(--gold);
   padding: 2rem 1.5rem;
-  transition: transform 0.3s, border-color 0.3s;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .service-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(201,168,76,0.07), inset 0 0 30px rgba(201,168,76,0.03);
 }
 
 .btn-gold {
@@ -81,7 +98,8 @@ body {
   text-transform: uppercase;
   font-size: 0.8rem;
   padding: 0.9rem 2.2rem;
-  transition: background 0.3s, transform 0.2s;
+  border-radius: 2px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
   cursor: pointer;
   border: none;
   text-decoration: none;
@@ -90,6 +108,7 @@ body {
 .btn-gold:hover {
   background: var(--gold-light);
   transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(201,168,76,0.3);
 }
 
 .btn-ghost {
@@ -101,6 +120,7 @@ body {
   text-transform: uppercase;
   font-size: 0.8rem;
   padding: 0.9rem 2.2rem;
+  border-radius: 2px;
   transition: all 0.3s;
   cursor: pointer;
   background: transparent;
@@ -110,6 +130,7 @@ body {
 .btn-ghost:hover {
   background: var(--gold);
   color: #000;
+  box-shadow: 0 0 20px rgba(201,168,76,0.2);
 }
 
 .gallery-item {
@@ -150,4 +171,15 @@ body {
 
 .footer-link:hover {
   color: var(--gold) !important;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
