@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const reviews = [
   { name: "Mike Smith",       rating: 5, text: "Coming here for the last 2 years — always the best haircuts, never disappointed.", service: "Children's cuts · Scissor cut · Beard trim" },
   { name: "Raj Kalsi",        rating: 5, text: "Just had a haircut with George — top-notch experience! Super chill atmosphere, and George really knows his craft. Definitely coming back!", service: "Scissor cut" },
@@ -25,7 +29,7 @@ function Stars({ rating }: { rating: number }) {
 
 function ReviewCard({ name, rating, text, service }: { name: string; rating: number; text: string; service: string }) {
   return (
-    <div style={{
+    <div className="review-card" style={{
       width: "300px", flexShrink: 0,
       background: "var(--bg-2)", border: "1px solid var(--line)",
       borderRadius: "14px", padding: "1.6rem",
@@ -57,6 +61,27 @@ function ReviewCard({ name, rating, text, service }: { name: string; rating: num
 }
 
 export default function Reviews() {
+  const [isMobile, setIsMobile] = useState(false);
+  const viewportRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 820px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const scrollByCard = (dir: 1 | -1) => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+    const card = vp.querySelector<HTMLElement>(".review-card");
+    const step = card ? card.offsetWidth + 20 /* gap 1.25rem */ : 320;
+    vp.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  const items = isMobile ? reviews : [...reviews, ...reviews];
+
   return (
     <section id="reviews" className="section">
       <div style={{ textAlign: "center", marginBottom: "3.5rem" }} className="container">
@@ -79,25 +104,66 @@ export default function Reviews() {
         </div>
       </div>
 
-      {/* Marquee track — full width, no container padding */}
-      <div style={{ overflow: "hidden", position: "relative" }}>
-        {/* Fade edges */}
-        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "80px", zIndex: 2, background: "linear-gradient(to right, var(--bg), transparent)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "80px", zIndex: 2, background: "linear-gradient(to left, var(--bg), transparent)", pointerEvents: "none" }} />
+      {/* Track — auto-marquee on desktop, swipe-snap on mobile */}
+      <div ref={viewportRef} className="reviews-viewport" style={{ position: "relative" }}>
+        {/* Fade edges (desktop only) */}
+        <div className="reviews-fade" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "80px", zIndex: 2, background: "linear-gradient(to right, var(--bg), transparent)", pointerEvents: "none" }} />
+        <div className="reviews-fade" style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "80px", zIndex: 2, background: "linear-gradient(to left, var(--bg), transparent)", pointerEvents: "none" }} />
 
         <div className="reviews-track" style={{ display: "flex", gap: "1.25rem", width: "max-content", paddingBottom: "0.5rem" }}>
-          {[...reviews, ...reviews].map((r, i) => (
+          {items.map((r, i) => (
             <ReviewCard key={i} {...r} />
           ))}
         </div>
       </div>
 
+      {/* Arrows (mobile only) */}
+      {isMobile && (
+        <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1.6rem" }}>
+          {([-1, 1] as const).map((dir) => (
+            <button
+              key={dir}
+              onClick={() => scrollByCard(dir)}
+              aria-label={dir === -1 ? "Previous review" : "Next review"}
+              style={{
+                width: "42px", height: "42px", borderRadius: "50%", border: "none",
+                background: "var(--red)", color: "#fff", cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                boxShadow: "0 2px 12px rgba(196,30,30,0.3)",
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                {dir === -1 ? <polyline points="15 18 9 12 15 6" /> : <polyline points="9 18 15 12 9 6" />}
+              </svg>
+            </button>
+          ))}
+        </div>
+      )}
+
       <style>{`
-        .reviews-track {
-          animation: reviews-scroll 40s linear infinite;
+        .reviews-viewport { overflow: hidden; }
+        @media (min-width: 821px) {
+          .reviews-track {
+            animation: reviews-scroll 40s linear infinite;
+          }
+          .reviews-track:hover {
+            animation-play-state: paused;
+          }
         }
-        .reviews-track:hover {
-          animation-play-state: paused;
+        @media (max-width: 820px) {
+          .reviews-viewport {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          .reviews-viewport::-webkit-scrollbar { display: none; }
+          .reviews-track {
+            animation: none;
+            padding-inline: calc((100vw - 300px) / 2);
+          }
+          .review-card { scroll-snap-align: center; }
+          .reviews-fade { display: none; }
         }
         @keyframes reviews-scroll {
           from { transform: translateX(0); }
