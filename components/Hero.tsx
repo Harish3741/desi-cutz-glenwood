@@ -36,10 +36,6 @@ export default function Hero() {
 
       {/* Content */}
       <div style={{ position: "relative", zIndex: 10, padding: "0 1.5rem", maxWidth: "860px" }}>
-        <p className="kicker center" style={{ justifyContent: "center", marginBottom: "1.8rem", color: "rgba(255,255,255,0.7)" }}>
-          Glenwood NSW · Est. 2010
-        </p>
-
         <h1
           className="brand"
           style={{

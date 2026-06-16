@@ -33,6 +33,9 @@ export default function Services() {
           ))}
         </div>
 
+        <p className="reveal" style={{ textAlign: "center", marginTop: "2.5rem", color: "var(--dim)", fontSize: "0.82rem", letterSpacing: "0.04em" }}>
+          Prices are subjective to change
+        </p>
       </div>
     </section>
   );
