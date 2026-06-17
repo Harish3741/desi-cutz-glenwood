@@ -4,13 +4,13 @@ import { useState } from "react";
 
 const faqs = [
   { q: "Do you take walk-ins?", a: "Yes! Walk-ins are always welcome. To guarantee your preferred time slot we recommend booking ahead, especially on weekends." },
-  { q: "How long does a skin fade take?", a: "A skin fade typically takes 45 minutes depending on complexity and hair type. A classic cut is usually around 30 minutes." },
-  { q: "What's included in the Cut + Beard Combo?", a: "A full haircut of your choice plus a beard trim with hot towel and precise shaping — everything you need to leave looking sharp." },
+  { q: "How long does a skin fade take?", a: "A skin fade takes around 20 minutes. A classic haircut is usually about 15 minutes, and a cut + beard combo around 30 minutes." },
+  { q: "What's included in the Cut + Beard Combo?", a: "A full haircut of your choice plus a beard trim with single blade razor line-ups and clean shaping." },
   { q: "Do you cut kids' hair?", a: "Absolutely. We offer kids' cuts for children aged 12 and under at $20, and we keep the experience relaxed and fun." },
-  { q: "How do I book an appointment?", a: "Book online in seconds using the Book Now button in the booking section — just pick your service, barber and time. You can also call us on (02) 8625 0010 or walk in during opening hours." },
-  { q: "What payment methods do you accept?", a: "Cash and all major cards including Visa, Mastercard and EFTPOS." },
-  { q: "Where are you located?", a: "Shop 3/60 Glenwood Park Dr, Glenwood NSW 2768 — inside the Glenwood Park shopping area, with free on-site parking." },
-  { q: "Do you do hair colouring?", a: "Yes — tints, highlights and fashion colours, with a consultation included. Pricing starts from $60 and varies by length and complexity." },
+  { q: "How do I book an appointment?", a: "Book online in seconds using the Book Now button in the booking section. Simply pick your service and time. You can also walk in during opening hours but be mindful that wait times may differ." },
+  { q: "What payment methods do you accept?", a: "We prefer cash, but also accept all major cards including Visa, Mastercard and EFTPOS." },
+  { q: "Where are you located?", a: "Shop 3/60 Glenwood Park Dr, Glenwood NSW 2768, inside the Glenwood Park shopping area with free on-site parking." },
+  { q: "Do you do hair colouring?", a: "Yes, tints, highlights and fashion colours with a consultation included. Pricing starts from $60 and varies by length and complexity." },
 ];
 
 export default function FAQ() {
