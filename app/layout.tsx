@@ -95,12 +95,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
-        {/* Setmore "Anywhere Book Now" — must load with the page (not after)
-            so it binds to the #Anywhere_button_iframe button in Booking.tsx */}
+        {/* Raw Setmore button — must exist in static HTML so the script can bind to it */}
+        <button
+          id="Anywhere_button_iframe"
+          className="anywhere-book-now-button"
+          data-booking-url="https://harish3iui.setmore.com"
+          data-new-tab="false"
+          style={{ position: "fixed", opacity: 0, pointerEvents: "none", zIndex: -1 }}
+        >
+          Book now
+        </button>
         <Script
           id="anywhere_book_now_script"
           src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
       </body>
     </html>

@@ -1,6 +1,9 @@
-// The Setmore "Anywhere Book Now" script is loaded in app/layout.tsx
-// (beforeInteractive) so it binds to the button below on page load.
-const SETMORE_BOOKING_URL = "https://harish3iui.setmore.com";
+"use client";
+
+function openSetmore() {
+  const btn = document.getElementById("Anywhere_button_iframe");
+  if (btn) btn.click();
+}
 
 export default function Booking() {
   return (
@@ -54,10 +57,8 @@ export default function Booking() {
           {/* Setmore Book Now button (restyled to match the site) */}
           <button
             type="button"
-            id="Anywhere_button_iframe"
-            className="btn anywhere-book-now-button"
-            data-booking-url={SETMORE_BOOKING_URL}
-            data-new-tab="false"
+            className="btn"
+            onClick={openSetmore}
             style={{
               background: "var(--red)", color: "#fff", border: "none",
               fontSize: "0.9rem", padding: "1.05rem 2.6rem", cursor: "pointer",
