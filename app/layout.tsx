@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Archivo } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
@@ -95,20 +94,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
-        {/* Raw Setmore button — must exist in static HTML so the script can bind to it */}
-        <button
-          id="Anywhere_button_iframe"
-          className="anywhere-book-now-button"
-          data-booking-url="https://harish3iui.setmore.com"
-          data-new-tab="false"
-          style={{ position: "fixed", opacity: 0, pointerEvents: "none", zIndex: -1 }}
-        >
-          Book now
-        </button>
-        <Script
-          id="anywhere_book_now_script"
-          src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"
-          strategy="afterInteractive"
+        {/* Setmore booking widget — raw HTML so the script binds on DOMContentLoaded */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+              <button id="Anywhere_button_iframe" class="anywhere-book-now-button" style="position:fixed;opacity:0;width:1px;height:1px;overflow:hidden;z-index:-1;" data-booking-url="https://harish3iui.setmore.com" data-new-tab="false">Book now</button>
+              <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
+            `,
+          }}
         />
       </body>
     </html>
