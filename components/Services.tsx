@@ -1,9 +1,9 @@
 const services = [
   { name: "Classic Haircut", desc: "Precision scissor or clipper cut tailored to you, finished with a clean line-up.", price: "$25", duration: "30 min" },
-  { name: "Skin Fade", desc: "A seamless blend from skin to length — the signature Desi Cutz finish.", price: "$30", duration: "45 min" },
+  { name: "Skin Fade", desc: "A seamless blend from skin to length with a sharp, clean finish.", price: "$30", duration: "45 min" },
   { name: "Kids Cut", desc: "Relaxed, friendly cuts for the little ones. Age 12 and under.", price: "$20", duration: "25 min" },
   { name: "Beard Trim & Shape", desc: "Hot towel, trim and precise shaping to frame your face perfectly.", price: "$20", duration: "20 min" },
-  { name: "Cut + Beard Combo", desc: "A full haircut paired with a beard sculpt — the complete look.", price: "$45", duration: "60 min" },
+  { name: "Cut + Beard Combo", desc: "A full haircut paired with a beard sculpt for the complete look.", price: "$45", duration: "60 min" },
   { name: "Hair Colour", desc: "Tints, highlights or fashion colour, with a consultation included.", price: "From $60", duration: "Varies" },
 ];
 
