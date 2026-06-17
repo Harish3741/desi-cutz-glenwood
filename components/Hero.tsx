@@ -1,3 +1,10 @@
+"use client";
+
+function openSetmore() {
+  const btn = document.getElementById("Anywhere_button_iframe");
+  if (btn) btn.click();
+}
+
 export default function Hero() {
   return (
     <section
@@ -63,7 +70,7 @@ export default function Hero() {
         </p>
 
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "3rem" }}>
-          <a href="#booking" className="btn-hero">Book Appointment</a>
+          <button type="button" className="btn-hero" onClick={openSetmore}>Book Appointment</button>
           <a href="#services" className="btn-hero-ghost">View Services</a>
         </div>
 

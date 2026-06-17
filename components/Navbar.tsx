@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from "react";
 
+function openSetmore() {
+  const btn = document.getElementById("Anywhere_button_iframe");
+  if (btn) btn.click();
+}
+
 const links = [
   { label: "Services", href: "#services" },
   { label: "Gallery", href: "#gallery" },
@@ -105,7 +110,7 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#booking" className="btn" style={{ padding: "0.6rem 1.4rem", fontSize: "0.72rem" }}>Book Now</a>
+          <button type="button" className="btn" style={{ padding: "0.6rem 1.4rem", fontSize: "0.72rem" }} onClick={openSetmore}>Book Now</button>
         </nav>
 
         {/* Mobile hamburger */}
@@ -126,7 +131,7 @@ export default function Navbar() {
           {links.map((l) => (
             <a key={l.href} href={l.href} className="nav-link" onClick={() => setOpen(false)} style={{ fontSize: "0.9rem" }}>{l.label}</a>
           ))}
-          <a href="#booking" className="btn" style={{ justifyContent: "center" }} onClick={() => setOpen(false)}>Book Now</a>
+          <button type="button" className="btn" style={{ justifyContent: "center", width: "100%" }} onClick={() => { setOpen(false); openSetmore(); }}>Book Now</button>
         </div>
       )}
 
