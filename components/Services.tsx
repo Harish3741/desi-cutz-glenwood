@@ -1,8 +1,8 @@
 const services = [
   { name: "Classic Haircut", desc: "Precision scissor or clipper cut tailored to you, finished with a clean line-up.", price: "$25", duration: "15 min" },
   { name: "Skin Fade", desc: "A seamless blend from skin to length with a sharp, clean finish.", price: "$30", duration: "20 min" },
-  { name: "Kids Cut", desc: "Relaxed, friendly cuts for the little ones. Age 12 and under.", price: "$20", duration: "25 min" },
-  { name: "Beard Trim & Shape", desc: "Single blade razor for precise line-ups and clean shaping.", price: "$20", duration: "20 min" },
+  { name: "Kids Cut", desc: "Relaxed, friendly cuts for the little ones. Age 12 and under.", price: "$20", duration: "15–20 min" },
+  { name: "Beard Trim & Shape", desc: "Single blade razor for precise line-ups and clean shaping.", price: "$20", duration: "10 min" },
   { name: "Cut + Beard Combo", desc: "A full haircut paired with a beard sculpt for the complete look.", price: "$45", duration: "30 min" },
   { name: "Hair Colour", desc: "Tints, highlights or fashion colour, with a consultation included.", price: "From $60", duration: "Varies" },
 ];
