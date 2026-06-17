@@ -135,10 +135,34 @@ export default function Navbar() {
         </div>
       )}
 
+      {/* Sticky mobile Book Now bar */}
+      <div className="mobile-sticky-book">
+        <button type="button" className="btn" onClick={openSetmore} style={{ width: "100%", justifyContent: "center", padding: "0.9rem", fontSize: "0.85rem" }}>
+          Book Now
+        </button>
+      </div>
+
       <style>{`
         @media (max-width: 820px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+        }
+        .mobile-sticky-book {
+          display: none;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          padding: 0.75rem 1rem;
+          padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+          background: rgba(255,255,255,0.95);
+          backdrop-filter: blur(12px);
+          border-top: 1px solid var(--line);
+          box-shadow: 0 -2px 16px rgba(0,0,0,0.06);
+        }
+        @media (max-width: 820px) {
+          .mobile-sticky-book { display: block; }
         }
       `}</style>
     </header>
