@@ -1,21 +1,8 @@
-"use client";
-
-import { useEffect } from "react";
-
+// The Setmore "Anywhere Book Now" script is loaded in app/layout.tsx
+// (beforeInteractive) so it binds to the button below on page load.
 const SETMORE_BOOKING_URL = "https://harish3iui.setmore.com";
 
 export default function Booking() {
-  // Load the Setmore "Anywhere Book Now" script once. It binds to the
-  // #Anywhere_button_iframe button below and opens an in-page booking overlay.
-  useEffect(() => {
-    if (document.getElementById("anywhere_book_now_script")) return;
-    const s = document.createElement("script");
-    s.id = "anywhere_book_now_script";
-    s.src = "https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js";
-    s.async = true;
-    document.body.appendChild(s);
-  }, []);
-
   return (
     <section id="booking" className="section" style={{ position: "relative", overflow: "hidden" }}>
       {/* Subtle red tint in background */}

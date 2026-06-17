@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Archivo } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
@@ -92,7 +93,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Setmore "Anywhere Book Now" — must load with the page (not after)
+            so it binds to the #Anywhere_button_iframe button in Booking.tsx */}
+        <Script
+          id="anywhere_book_now_script"
+          src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"
+          strategy="beforeInteractive"
+        />
+      </body>
     </html>
   );
 }
