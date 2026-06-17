@@ -76,11 +76,23 @@ export default function Reviews() {
     const vp = viewportRef.current;
     if (!vp) return;
     const card = vp.querySelector<HTMLElement>(".review-card");
-    const step = card ? card.offsetWidth + 20 /* gap 1.25rem */ : 320;
-    vp.scrollBy({ left: dir * step, behavior: "smooth" });
+    const step = card ? card.offsetWidth + 20 : 320;
+
+    if (isMobile) {
+      const maxScroll = vp.scrollWidth - vp.clientWidth;
+      if (dir === 1 && vp.scrollLeft >= maxScroll - 10) {
+        vp.scrollTo({ left: 0, behavior: "smooth" });
+      } else if (dir === -1 && vp.scrollLeft <= 10) {
+        vp.scrollTo({ left: maxScroll, behavior: "smooth" });
+      } else {
+        vp.scrollBy({ left: dir * step, behavior: "smooth" });
+      }
+    } else {
+      vp.scrollBy({ left: dir * step, behavior: "smooth" });
+    }
   };
 
-  const items = isMobile ? reviews : [...reviews, ...reviews];
+  const items = [...reviews, ...reviews];
 
   return (
     <section id="reviews" className="section">
