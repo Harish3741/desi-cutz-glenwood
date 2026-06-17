@@ -16,7 +16,7 @@ export default function Services() {
           <h2 className="title">Services &amp; <span className="accent-text">Pricing</span></h2>
           <div className="rule" />
           <p className="lead" style={{ maxWidth: "460px", margin: "1.4rem auto 0" }}>
-            Indicative pricing — walk-ins welcome, appointments preferred.
+            Prices are subjective to change
           </p>
         </div>
 
