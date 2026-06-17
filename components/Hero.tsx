@@ -65,8 +65,7 @@ export default function Hero() {
             maxWidth: "520px",
           }}
         >
-          Sharp cuts, clean fades and proper beard work — right in the heart
-          of Glenwood.
+          All your grooming needs in one place — book online to skip the line.
         </p>
 
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "3rem" }}>
